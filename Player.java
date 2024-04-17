@@ -5,7 +5,7 @@ public class Player extends Character {
     private int armor, damage;
     private String name, race, country;
     private List<String> skills;
-    private ArrayList<Item> inventory;
+    private static ArrayList<Item> inventory;
 
     public Player(int armor, int damage, String name, String race, List<String> skills, String country) {
         this.armor = armor;
@@ -17,6 +17,27 @@ public class Player extends Character {
         this.country = country;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getRace() {
+        return race;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public List<String> getSkills() {
+        return skills;
+    }
+
+    public static void getInventory() {
+        System.out.println(inventory);
+    }
+
+
     @Override
     public void info() {
         System.out.println("Your name is: " + name + " and you are a " + race);
@@ -26,7 +47,7 @@ public class Player extends Character {
         System.out.println("Inventory: " + inventoryToString());
     }
 
-    public void addItem(Item item) {
+    public static void addItem(Item item) {
         inventory.add(item);
     }
 
@@ -42,7 +63,7 @@ public class Player extends Character {
         return sb.toString().substring(0, sb.length() - 2);
     }
 
-    private String inventoryToString() {
+    static String inventoryToString() {
         if (inventory.isEmpty()) {
             return "Empty";
         } else {
